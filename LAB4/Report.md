@@ -10,7 +10,7 @@
 
 <center>专业：物联网工程</center>
 
-<center>提交日期：2023.11.27</center>
+<center>提交日期：2023.12.2</center>
 
 
 
@@ -89,6 +89,8 @@
 
 
 
+随后，使用`services.msc`打开服务，启动Routing and Remote Access
+
 至此，已完成路由器A的配置
 
 
@@ -109,11 +111,70 @@
 
 ![77f61dcf36adfee8668c4f87431527a](./assets/77f61dcf36adfee8668c4f87431527a.jpg)
 
-互联网连通性成功验证
+互联网连通性成功验证（tracert指令忘记拍照了，但是实机验证与仿真验证结果是一致的）
 
 
 
 ## 三、仿真环境下的互联网组网与路由器配置
 
-### 
+### 静态路由
 
+#### 整体预览
+
+![img_v3_025j_020835f7-3a4e-43b5-871a-1fa86c28c3cg](./assets/img_v3_025j_020835f7-3a4e-43b5-871a-1fa86c28c3cg.jpg)
+
+#### PC0 和 PC1配置
+
+![img_v3_025j_fbe74244-be87-4aca-85cd-d050a3b65e2g](./assets/img_v3_025j_fbe74244-be87-4aca-85cd-d050a3b65e2g.jpg)
+
+![img_v3_025j_fb9afae7-1134-43ec-baf0-388ba596ebeg](./assets/img_v3_025j_fb9afae7-1134-43ec-baf0-388ba596ebeg.jpg)
+
+
+
+#### 路由器配置
+
+1. 配置端口0、1的信息并开启端口
+
+![img_v3_025j_07636a4c-bbaa-480c-b158-3c559c0635eg](./assets/img_v3_025j_07636a4c-bbaa-480c-b158-3c559c0635eg.jpg)
+
+![img_v3_025j_18552616-e5a8-4663-b28f-26efd9edba2g](./assets/img_v3_025j_18552616-e5a8-4663-b28f-26efd9edba2g.jpg)
+
+![img_v3_025j_3a651df6-ec95-4398-841a-880e882bc68g](./assets/img_v3_025j_3a651df6-ec95-4398-841a-880e882bc68g.jpg)
+
+![img_v3_025j_f99b5582-baf8-4170-9899-26a29803baag](./assets/img_v3_025j_f99b5582-baf8-4170-9899-26a29803baag.jpg)
+
+2. 填写路由表
+
+![img_v3_025j_6066e7e3-2574-44a0-90fa-b9271730549g](./assets/img_v3_025j_6066e7e3-2574-44a0-90fa-b9271730549g.jpg)
+
+![img_v3_025j_7039783d-9d3a-4143-a4a5-92466e24702g](./assets/img_v3_025j_7039783d-9d3a-4143-a4a5-92466e24702g.jpg)
+
+
+
+#### 连通性测试
+
+![img_v3_025j_3674a9f2-0a41-4d4f-8a65-a8787de6475g](./assets/img_v3_025j_3674a9f2-0a41-4d4f-8a65-a8787de6475g.jpg)
+
+![img_v3_025j_2d0a6fad-c73f-4127-b9c3-c89837390e2g](./assets/img_v3_025j_2d0a6fad-c73f-4127-b9c3-c89837390e2g.jpg)
+
+![img_v3_025j_afe9e529-4b7f-4235-b8ec-04722179662g](./assets/img_v3_025j_afe9e529-4b7f-4235-b8ec-04722179662g.jpg)
+
+![img_v3_025j_6611bf6c-80f3-42e0-b38e-212377438b2g](./assets/img_v3_025j_6611bf6c-80f3-42e0-b38e-212377438b2g.jpg)
+
+
+
+### 动态路由配置
+
+![img_v3_025j_4b3f9666-5231-4202-ab6c-c5805355ad1g](./assets/img_v3_025j_4b3f9666-5231-4202-ab6c-c5805355ad1g.jpg)
+
+![img_v3_025j_b4f2ecd2-1063-4821-b704-841c569eb52g](./assets/img_v3_025j_b4f2ecd2-1063-4821-b704-841c569eb52g.jpg)
+
+配置正确，连通性与静态路由一致
+
+
+
+## 一些问题
+
+关于路由表查询
+
+在路由表查询过程中，先解析出包内的目的ip和子网掩码，并且将两者进行“与”操作，随后根据得到的结果按照路由内储存的路由表按顺序逐个查找，当有结果匹配时，会根据该条路由表信息从指定的接口发送到下一条，完成路由转发操作。
