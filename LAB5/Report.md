@@ -63,7 +63,7 @@ typedef struct IPHeader_t {		//IP首部
 	u_int DstIP;//目的IP
 }IPHeader_t;
 
-typedef struct ARPFrame_t {//IP首部
+typedef struct ARPFrame_t {
 	FrameHeader_t FrameHeader;
 	WORD HardwareType;//硬件类型
 	WORD ProtocolType;//协议类型
